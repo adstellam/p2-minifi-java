@@ -1,0 +1,13 @@
+version: "2.4"
+services:
+  minifi:
+    image: apache/nifi-minifi:latest
+    restart: always
+    hostname: cultivator0
+    network_mode: host
+    volumes:
+      - ./conf/bootstrap.conf:/opt/minifi/minifi-current/conf/bootstrap.conf
+      - ./conf/config.yml:/opt/minifi/minifi-current/conf/config.yml
+      - ./tls/keystore.jks:/opt/minifi/minifi-current/tls/keystore.jks
+      - ./tls/truststore.jks:/opt/minifi/minifi-current/tls/truststore.jks
+      - ./data:/data
